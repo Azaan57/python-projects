@@ -1,16 +1,14 @@
-questions = ("What are potatoes? ",
-             "What is my favourite attunement? ",
-             "Who is maestro? ",
-             "Which character uses two elements? ",
-             "What is the first region in genshin? ")
+question1 = {"question": "What are potatoes?","options":["A. Fruit","B. Vegetable","C. Plant", "D. Life"], "answer": "B" }
 
-options = (("A. Fruit","B. Vegetable","C. Plant","D. Life"),
-           ("A. Frostdraw","B. Shadowcast","C. Flamecharm","D. Thundercall"),
-           ("A. a bum","B. the goat","C. singer","D. him"),
-           ("A. klee","B. durin","C. varka","D. nicole"),
-           ("A. liyue","B. snezhnaya","C. mondstadt","D. inazuma"))
+question2 = {"question": "What is my favourite attunement?","options":["A. Frostdraw","B. Shadowcast","C. Flamecharm", "D. Thundercall"], "answer": "A" }
 
-answers = ("B", "A", "D", "C", "C")
+question3 = {"question": "Who is maestro?","options":["A. a bum","B. the goat","C. singer", "D. him"], "answer": "D" }
+
+question4 = {"question": "Which character uses two elements?","options":["A. klee","B. durin","C. varka", "D. nicole"], "answer": "C" }
+
+question5 = {"question": "What is the first region in genshin?","options":["A. liyue","B. snezhnaya","C. mondstadt", "D. inazuma"], "answer": "C" }
+
+quiz = [question1, question2, question3, question4, question5]
 
 guesses = []
 
@@ -24,26 +22,26 @@ while True:
     print ("       DA QUIZ       ")
     print ("---------------------")
 
-    for question_num, question in enumerate(questions):
+    for q in quiz:
         print("-------------------")
-        print(question)
-        for option in options[question_num]:
-            print(option)
+        print(q["question"])
+        for opt in q["options"]:
+            print(opt)
 
         guess = input("Enter (A), (B), (C), (D) ").upper()
         while guess != "A" and guess != "B" and guess != "C" and guess != "D":
             print("Please enter a value from the list.")
             guess = input("Enter (A), (B), (C), (D) ").upper()
         guesses.append(guess)
-        if guess == answers[question_num]:
+        if guess == q["answer"]:
             print("Correct :D")#
             score += 1
         else:
             print("Incorrect :(")
-            print(f"{answers[question_num]} is the correct answer")
+            print(f"{q["answer"]} is the correct answer")
         question_num += 1
 
-    score = int(score / len(questions) * 100)
+    score = int(score / len(quiz) * 100)
 
     print("Your score is " f"{score}%!")
 
